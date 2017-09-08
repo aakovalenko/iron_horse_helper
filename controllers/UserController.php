@@ -78,6 +78,8 @@ class UserController extends Controller
         $horse = new Horse();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+           // var_dump(Yii::$app->request->post());
+           // die();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [

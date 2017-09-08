@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user".
@@ -19,7 +20,7 @@ use yii\db\ActiveRecord;
  * @property string $date_create
  * @property string $date_update
  */
-class User extends ActiveRecord
+class User extends ActiveRecord implements IdentityInterface
 {
     /**
      * @inheritdoc
@@ -76,6 +77,27 @@ class User extends ActiveRecord
             'date_update' => Yii::t('app', 'Date Update'),
         ];
     }
+
+    public function setPassword($pass)
+    {
+        $this->pass_hash = sha1($pass);
+    }
+
+    public function validatePassword($pass)
+    {
+        return $this->pass === sha1($this->pass_hash);
+    }
+
+    public static function findIdentity($id){}
+
+    public static function findIdentityByAccessToken($token, $type = null){}
+
+    public function getId(){}
+
+    public function getAuthKey(){}
+
+    public function validateAuthKey($authKey){}
+
 
 
 }

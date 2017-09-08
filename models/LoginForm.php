@@ -13,8 +13,8 @@ use yii\base\Model;
  */
 class LoginForm extends Model
 {
-    public $username;
-    public $password;
+    public $email;
+    public $pass_hash;
     public $rememberMe = true;
 
     private $_user = false;
@@ -27,11 +27,11 @@ class LoginForm extends Model
     {
         return [
             // username and password are both required
-            [['username', 'password'], 'required'],
+            [['email', 'pass_hash'], 'required'],
             // rememberMe must be a boolean value
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
-            ['password', 'validatePassword'],
+            ['pass_hash', 'validatePassword'],
         ];
     }
 
@@ -44,13 +44,27 @@ class LoginForm extends Model
      */
     public function validatePassword($attribute, $params)
     {
-        if (!$this->hasErrors()) {
-            $user = $this->getUser();
+        if(!$this->hasErrors()){ //если нет ошибок в валидации
 
-            if (!$user || !$user->validatePassword($this->password)) {
-                $this->addError($attribute, 'Incorrect username or password.');
-            }
+        $user = $this->getUser(); // получаем пользователя для дальнейшего тестирования
+
+        if(!$user || !$user -> validatePassword($this->pass_hash))
+        {
+            //если мы не нашли в бызе такого пользователя
+
+            $this->addError($attribute, 'Пароль или пользователь введены неверно');
         }
+
+    }
+
+
+
+    }
+
+    public function getUser()
+    {
+        return User::findOne(['email'=>$this->email]);  // получаем его по введеному емейлу
+
     }
 
     /**
@@ -70,12 +84,5 @@ class LoginForm extends Model
      *
      * @return User|null
      */
-    public function getUser()
-    {
-        if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
-        }
 
-        return $this->_user;
-    }
 }

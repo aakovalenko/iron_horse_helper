@@ -16,7 +16,7 @@ use yii\widgets\Pjax;
 
     <?= $form->field($model, 'name')->textInput() ?>
 
-    <?= $form->field($model, 'pass_hash')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'pass_hash')->passwordInput() ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
