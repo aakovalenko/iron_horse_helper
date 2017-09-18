@@ -22,6 +22,8 @@ use yii\web\IdentityInterface;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
+
+    public $pass;
     /**
      * @inheritdoc
      */
@@ -44,13 +46,23 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
+    public function register()
+    {
+        if (!$this->validate()){
+            return false;
+        }
+        $this->pass_hash = Yii::$app->security->generatePasswordHash($this->pass);
+        return $this->save(false);
+    }
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [[ 'name', 'pass_hash', 'email', 'phone'], 'required'],
+            [[ 'name', 'pass', 'email', 'phone'], 'required'],
+            [['pass'],'string', 'max'=> 255],
             [['phone'], 'integer'],
             [['name', 'email'], 'unique', 'targetClass' => User::className()],
             ['email','email'],
@@ -78,21 +90,19 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
-    public function setPassword($pass)
-    {
-        $this->pass_hash = sha1($pass);
-    }
 
-    public function validatePassword($pass)
-    {
-        return $this->pass === sha1($this->pass_hash);
-    }
 
-    public static function findIdentity($id){}
+    public static function findIdentity($id){
+
+        return User::findOne($id);
+    }
 
     public static function findIdentityByAccessToken($token, $type = null){}
 
-    public function getId(){}
+    public function getId()
+    {
+        return $this->id;
+    }
 
     public function getAuthKey(){}
 

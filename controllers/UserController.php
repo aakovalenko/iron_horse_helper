@@ -32,13 +32,7 @@ class UserController extends Controller
 
         ];
     }
-    public function actionPush()
-    {
-        $model = new Horse();
-        //return '<h1>123 turtles</h1>';
-        return $this->renderAjax('_form',['model' => $model]);
 
-    }
 
     /**
      * Lists all User models.
@@ -77,7 +71,7 @@ class UserController extends Controller
         $model = new User();
         $horse = new Horse();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->register()) {
            // var_dump(Yii::$app->request->post());
            // die();
             return $this->redirect(['view', 'id' => $model->id]);
