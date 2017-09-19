@@ -123,4 +123,24 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionRole()
+    {
+
+        //auth_item
+
+        /*$admin = Yii::$app->authManager->createRole('admin');
+        $admin->description = 'Admin';
+        Yii::$app->authManager->add($admin);
+
+        $user = Yii::$app->authManager->createRole('user');
+        $user->description = 'User';
+        Yii::$app->authManager->add($user);
+
+        $manager = Yii::$app->authManager->createRole('manager');
+        $manager->description = 'Manager';
+        Yii::$app->authManager->add($manager);*/
+
+        return 12345;
+    }
 }

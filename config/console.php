@@ -21,10 +21,11 @@ $config = [
             ],
         ],
         'db' => $db,
-        'components' => [
+
             'authManager' => [
                 'class' => 'yii\rbac\DbManager',
-            ],
+                'cache' => 'cache' //включаем кеширование
+],
     ],
     'params' => $params,
     /*
