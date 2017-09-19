@@ -39,6 +39,10 @@ $config = [
             ],
         ],
         'db' => $db,
+        'components' => [
+            'authManager' => [
+                'class' => 'yii\rbac\DbManager',
+            ],
 
         'urlManager' => [
             'enablePrettyUrl' => true,
