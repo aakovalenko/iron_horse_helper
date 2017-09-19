@@ -12,6 +12,7 @@ $config = [
             //'class' => 'app\components\User',
             //'identityClass' => 'dektrium\user\models\User',
             'class' => 'dektrium\user\Module',
+            'admins' => ['andrii'],
 
         ],
     ],

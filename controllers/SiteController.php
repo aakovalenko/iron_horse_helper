@@ -30,7 +30,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['contact','about'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['canAdmin'],
                     ],
                 ],
             ],
@@ -148,19 +148,20 @@ class SiteController extends Controller
 
 
         //auth_item permission
-      /*  $permit = Yii::$app->authManager->createPermission('canAdmin');
+        /*$permit = Yii::$app->authManager->createPermission('canAdmin');
         $permit->description = 'Enter to the admin part';
         Yii::$app->authManager->add($permit);*/
 
         //auth_item_child
-       /* $roleA = Yii::$app->authManager->getRole('admin');
+        /*$roleA = Yii::$app->authManager->getRole('admin');
         $roleC = Yii::$app->authManager->getRole('manager');
         $permit = Yii::$app->authManager->getPermission('canAdmin');
         Yii::$app->authManager->addChild($roleA, $permit);
         Yii::$app->authManager->addChild($roleC, $permit);*/
 
-        $userRole = Yii::$app->authManager->getRole('admin');
-        Yii::$app->authManager->assign($userRole, Yii::$app->user->getId(1));
+       //auth_assignment
+       /*$userRole = Yii::$app->authManager->getRole('admin');
+       Yii::$app->authManager->assign($userRole, Yii::$app->user->getId(1));*/
 
 
         return 12345;
