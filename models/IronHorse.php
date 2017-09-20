@@ -51,6 +51,7 @@ class IronHorse extends \yii\db\ActiveRecord
         return [
 
             [
+
                 'class' => TimestampBehavior::className(),
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => ['created_at'],

@@ -4,7 +4,7 @@
 
 $this->title = 'Iron-horse helper';
 ?>
-<div class="site-index">
+<!--<div class="site-index">
 
     <div class="jumbotron">
         <h1>Congratulations!</h1>
@@ -50,4 +50,4 @@ $this->title = 'Iron-horse helper';
         </div>
 
     </div>
-</div>
+</div>-->
