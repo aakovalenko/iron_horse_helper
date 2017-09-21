@@ -12,10 +12,21 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="iron-horse-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title) ?>
+
+    <h2 style="color: #2cff20">User ID: <?= $model->user_id;?>(<?=(Yii::$app->user->identity->username)?>)</h2>
+
+
+
+
 
     <p>
+        <?php if (\Yii::$app->user->can('update')): ?>
+
+
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+
+
         <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
@@ -24,6 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+
+    <?php endif;?>
 
     <?= DetailView::widget([
         'model' => $model,

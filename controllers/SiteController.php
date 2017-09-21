@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\rules\AuthorRule;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -9,6 +10,7 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+
 
 class SiteController extends Controller
 {
@@ -144,20 +146,51 @@ class SiteController extends Controller
 
 
         //auth_item permission
-        /*$permit = Yii::$app->authManager->createPermission('canAdmin');
-        $permit->description = 'Enter to the admin part';
+        /*$permit = Yii::$app->authManager->createPermission('updateOwnHorse');
+        $permit->description = 'Update Own Horse';
+        Yii::$app->authManager->add($permit);*/
+
+
+
+
+        /*$permit = Yii::$app->authManager->createPermission('delete');
+        $permit->description = 'Delete';
         Yii::$app->authManager->add($permit);*/
 
         //auth_item_child
-        /*$roleA = Yii::$app->authManager->getRole('admin');
+       /* $roleA = Yii::$app->authManager->getRole('user');
         $roleC = Yii::$app->authManager->getRole('manager');
-        $permit = Yii::$app->authManager->getPermission('canAdmin');
+        $permit = Yii::$app->authManager->getPermission('delete');
         Yii::$app->authManager->addChild($roleA, $permit);
         Yii::$app->authManager->addChild($roleC, $permit);*/
 
        //auth_assignment
-       /*$userRole = Yii::$app->authManager->getRole('admin');
-       Yii::$app->authManager->assign($userRole, Yii::$app->user->getId(1));*/
+       /*$userRole = Yii::$app->authManager->getRole('user');
+       Yii::$app->authManager->assign($userRole, Yii::$app->user->getId(5));*/
+
+
+       //Создания правила
+      /* $auth = Yii::$app->authManager;
+       $rule = new AuthorRule();
+       $auth->add($rule);
+
+        $updateOwnHorse = $auth->createPermission('updateOwnHorse');
+        $updateOwnHorse->description = 'Редактировать посты';
+        $updateOwnHorse->ruleName = $rule->name;
+        $auth->add($updateOwnHorse);*/
+
+      //создаем Rule
+      /*$auth = Yii::$app->authManager;
+      $rule = new AuthorRule();
+      $auth->add($rule);*/
+
+      //var_dump($auth);
+
+/*      $updateOwnHorse = $auth->createPermission('updateOwnHorse');
+        $updateOwnHorse->description = 'Редактировать свои посты';
+        $updateOwnHorse->ruleName = $rule->name;
+        $auth->add($updateOwnHorse);*/
+
 
 
         return 12345;
