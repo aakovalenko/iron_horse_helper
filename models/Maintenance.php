@@ -62,7 +62,7 @@ class Maintenance extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'iron_horse_id' => Yii::t('app', 'Iron Horse ID'),
+            'iron_horse_id' => Yii::t('app', 'Iron Horse'),
             'date' => Yii::t('app', 'Date'),
             'mileage' => Yii::t('app', 'Mileage'),
             'oil' => Yii::t('app', 'Oil'),

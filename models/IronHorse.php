@@ -22,6 +22,8 @@ use yii\behaviors\TimestampBehavior;
  */
 class IronHorse extends \yii\db\ActiveRecord
 {
+
+    public $file;
     /**
      * @inheritdoc
      */
@@ -41,7 +43,8 @@ class IronHorse extends \yii\db\ActiveRecord
             [['brand', 'model', 'year', 'engine', 'mileage',], 'required'],
             [['year', 'engine', 'mileage', 'color'], 'integer'],
             [['user_id'], 'string', 'max' => 11],
-            [['brand', 'model'], 'string', 'max' => 50],
+            [['file'],'file'],
+            [['brand', 'model','image'], 'string', 'max' => 50],
 
         ];
     }

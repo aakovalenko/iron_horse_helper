@@ -10,7 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="iron-horse-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'user_id')->textInput(['maxlength' => true]) ?>
 
@@ -26,6 +26,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'color')->textInput() ?>
 
+    <?= $form->field($model, 'image')->fileInput() ?>
 
 
     <div class="form-group">

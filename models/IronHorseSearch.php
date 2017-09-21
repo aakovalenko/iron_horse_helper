@@ -62,6 +62,9 @@ class IronHorseSearch extends IronHorse
             // $query->where('0=1');
             return $dataProvider;
         }
+        if (!Yii::$app->user->can('admin')){
+            $query->andWhere(['user_id' => Yii::$app->user->id]);
+        }
 
         // grid filtering conditions
         $query->andFilterWhere([

@@ -42,4 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 </div>
 
+<p>
+
+    <?= Html::a(Yii::t('app', 'Go to maintenance'), ['maintenance'], ['class' => 'btn btn-danger']) ?>
+
+</p>
+
 <h4>User id: <?= \Yii::$app->user->identity->id?></h4>

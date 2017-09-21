@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Maintenance;
+use app\models\MaintenanceSearch;
 use Yii;
 use app\models\IronHorse;
 use app\models\IronHorseSearch;
@@ -9,6 +11,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * IronHorseController implements the CRUD actions for IronHorse model.
@@ -79,12 +82,24 @@ class IronHorseController extends Controller
         $model = new IronHorse();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $imageName = $model->brand;
+
+            $model->file = UploadedFile::getInstance($model,'file');
+            $model->saveAs('uploads/');
+
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionMaintenance()
+    {
+        return $this->redirect('../maintenance/create');
+
     }
 
     /**
@@ -134,4 +149,6 @@ class IronHorseController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
 }
