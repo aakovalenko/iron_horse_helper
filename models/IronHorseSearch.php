@@ -12,6 +12,8 @@ use app\models\IronHorse;
  */
 class IronHorseSearch extends IronHorse
 {
+
+
     /**
      * @inheritdoc
      */
@@ -39,9 +41,13 @@ class IronHorseSearch extends IronHorse
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+
+
+
+        public function search($params)
     {
         $query = IronHorse::find();
+
 
         // add conditions that should always apply here
 
@@ -60,6 +66,7 @@ class IronHorseSearch extends IronHorse
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            //'user_id' => $this->id,
             'year' => $this->year,
             'engine' => $this->engine,
             'mileage' => $this->mileage,

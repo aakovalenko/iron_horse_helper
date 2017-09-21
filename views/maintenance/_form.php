@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use dosamigos\datepicker\DatePicker;
+use yii\helpers\ArrayHelper;
+use app\models\IronHorse;
+
 
 
 /* @var $this yii\web\View */
@@ -14,7 +17,12 @@ use dosamigos\datepicker\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'iron_horse_id')->textInput() ?>
+
+    <?= $form->field($model, 'iron_horse_id')->dropDownList(
+            ArrayHelper::map(IronHorse::find()->all(),'id','brand'),
+            ['prompt' => 'Select Car']
+    ); ?>
+
 
     <?= $form->field($model, 'date')->widget(
         DatePicker::className(), [

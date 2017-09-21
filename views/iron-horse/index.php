@@ -41,3 +41,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
+
+<h4>User id: <?= \Yii::$app->user->identity->id?></h4>
