@@ -81,12 +81,25 @@ class IronHorseController extends Controller
     {
         $model = new IronHorse();
 
+        $model->user_id = Yii::$app->user->id;
+
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
-            $imageName = $model->brand;
+
+
+            //1.get the instance of the upload file
+
+           /* $imageName = $model->brand;
 
             $model->file = UploadedFile::getInstance($model,'file');
-            $model->saveAs('uploads/');
+
+            $model->file->saveAs('uploads/'.$imageName.'.'.$model->file->extension);
+
+            //2. save the path in the db column
+
+            $model->image = 'uploads/'.$imageName.'.'.$model->file->extension;*/
+
 
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

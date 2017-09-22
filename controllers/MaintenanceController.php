@@ -79,6 +79,7 @@ class MaintenanceController extends Controller
     public function actionCreate()
     {
         $model = new Maintenance();
+        //$model->
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

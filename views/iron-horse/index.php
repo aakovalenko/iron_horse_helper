@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+
             'id',
             'user_id',
             'brand',
@@ -37,7 +38,18 @@ $this->params['breadcrumbs'][] = $this->title;
              'created_at:datetime',
              'updated_at:datetime',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [   'class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {delete} {update} {maintenance}',
+                'buttons' => [
+                        'maintenance' => function ($url, $model, $key)
+                        {
+                            return Html::a('<span class="glyphicon glyphicon-wrench"></span>', $url , [
+                                    'title' => 'go to maintenance',
+                                    'data-pjax' => '0'
+                            ]);
+                        }
+                ]
+            ],
         ],
     ]); ?>
 </div>

@@ -40,9 +40,10 @@ class IronHorse extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['brand', 'model', 'year', 'engine', 'mileage',], 'required'],
+            [['brand', 'model', 'year', 'engine', 'mileage','user_id'], 'required'],
             [['year', 'engine', 'mileage', 'color'], 'integer'],
             [['user_id'], 'string', 'max' => 11],
+            [['user_id'],'safe'],
             [['file'],'file'],
             [['brand', 'model','image'], 'string', 'max' => 50],
 
