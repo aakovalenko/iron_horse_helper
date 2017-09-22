@@ -45,7 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         {
                             return Html::a('<span class="glyphicon glyphicon-wrench"></span>', $url , [
                                     'title' => 'go to maintenance',
-                                    'data-pjax' => '0'
+                                    'data-pjax' => '0',
+
                             ]);
                         }
                 ]

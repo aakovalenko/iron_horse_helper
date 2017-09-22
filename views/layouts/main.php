@@ -41,6 +41,7 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Blog', 'url' => ['/blog/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Car', 'url' => ['/iron-horse/index'],'visible' => !Yii::$app->user->isGuest],
 
 
