@@ -109,6 +109,11 @@ class IronHorseController extends Controller
         }
     }
 
+    public function actionFueling()
+    {
+        return $this->redirect('../fueling/create');
+    }
+
     public function actionMaintenance()
     {
         return $this->redirect('../maintenance/create');

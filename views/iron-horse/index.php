@@ -39,13 +39,21 @@ $this->params['breadcrumbs'][] = $this->title;
              'updated_at:datetime',
 
             [   'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {delete} {update} {maintenance}',
+                'template' => '{view} {delete} {update} {maintenance} {fueling}',
                 'buttons' => [
                         'maintenance' => function ($url, $model, $key)
                         {
                             return Html::a('<span class="glyphicon glyphicon-wrench"></span>', $url , [
                                     'title' => 'go to maintenance',
                                     'data-pjax' => '0',
+
+                            ]);
+                        },
+                        'fueling' => function($url, $model,$key)
+                    {
+                            return Html::a('<span class="glyphicons glyphicon-tint"></span>', $url , [
+                                'title' => 'go to fueling',
+                                'data-pjax' => '0',
 
                             ]);
                         }
