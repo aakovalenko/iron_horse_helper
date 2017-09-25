@@ -25,16 +25,8 @@ use app\models\IronHorse;
     ); ?>
 
 
-    <?= $form->field($model, 'date')->widget(
-        DatePicker::className(), [
-        // inline too, not bad
-        'inline' => false,
-        // modify template for custom rendering
-        //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
-        'clientOptions' => [
-            'autoclose' => true,
-            'format' => 'dd-M-yyyy'
-        ]]); ?>
+    <?= $form->field($model, 'date')->textInput()->hint(Html::tag('span', 'Format yyyy-mm-dd')) ?>
+
 
     <?= $form->field($model, 'mileage')->textInput() ?>
 

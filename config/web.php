@@ -15,6 +15,8 @@ $config = [
             'admins' => ['andrii'],
 
         ],
+
+
     ],
     'components' => [
 
@@ -68,6 +70,10 @@ $config = [
             'rules' => [
             ],
         ],
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'dateFormat' => 'php: Y-m-d',
+          ]
 
     ],
     'params' => $params,

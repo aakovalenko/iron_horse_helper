@@ -50,6 +50,7 @@ class Maintenance extends \yii\db\ActiveRecord
         return [
             [['iron_horse_id', 'mileage'], 'integer'],
             [['mileage'], 'required'],
+            [['date'],'date'],
             [['oil', 'gearbox_oil', 'hydraulic_oil', 'oil_filter', 'air_filter', 'brake_fluid', 'coolant', 'bulbs', 'brake_pads', 'brake_discs', 'generator_belt', 'camshaft_belt', 'wheel_rotation', 'tire_pressure', 'alignment', 'battery', 'spark_plug', 'spark_plug_wire'], 'string', 'max' => 50],
             [['iron_horse_id'], 'exist', 'skipOnError' => true, 'targetClass' => IronHorse::className(), 'targetAttribute' => ['iron_horse_id' => 'id']],
         ];
