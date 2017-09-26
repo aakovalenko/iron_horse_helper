@@ -20,13 +20,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status_id')->textInput() ?>
+    <?= $form->field($model, 'status_id')->dropDownList(['off','on']) ?>
 
     <?= $form->field($model, 'sort')->textInput() ?>
 
-    <?= $form->field($model, 'date_create')->textInput() ?>
 
-    <?= $form->field($model, 'date_update')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

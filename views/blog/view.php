@@ -35,8 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'url:url',
             'status_id',
             'sort',
-            'date_create',
-            'date_update',
+            'date_create:date',
+            'date_update:date',
         ],
     ]) ?>
 

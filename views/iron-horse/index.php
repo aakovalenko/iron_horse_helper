@@ -85,15 +85,31 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php
 $link = \yii\helpers\Url::to('/iron-horse/test');
 $js = <<<JS
-   /*$('#fueling').on('click', function(){
+   $('#fueling').on('click', function(){
+       
+       var car_id = $(this).data('id');
        
        $.ajax({
        type: 'POST',
-       url: '$link'
-       data: {'id' => '2'}
+       url: '/iron-horse/test',
+       data: {'id': car_id},
+        contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            
+             success: function (data) {
+               //do something
+                console.log(fileid);
+               alert("working");
+            },
+            error: function (errormessage) {
+
+                //do something else
+                alert("not working");
+
+            }
        
        })
-     })*/
+     })
      
      
 

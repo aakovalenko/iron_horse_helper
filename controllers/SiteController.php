@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Blog;
 use app\rules\AuthorRule;
 use Yii;
 use yii\filters\AccessControl;
@@ -64,7 +65,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $blogs = Blog::find()->all();
+        return $this->render('index', ['blogs' => $blogs]);
     }
 
     /**
