@@ -68,6 +68,12 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+               /* 'blog/<$url>' => 'blog/one',
+                'blog/all' => 'blog/all',
+                'blog' => 'blog/index'*/
+                'one/all' => 'one/all',
+               'one/<url>' => 'one/',
+
             ],
         ],
         'formatter' => [

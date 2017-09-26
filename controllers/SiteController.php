@@ -65,7 +65,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $blogs = Blog::find()->andWhere(['status_id' => 1])->all();
+        $blogs = Blog::find()->andWhere(['status_id' => 1])->orderBy('sort')->all();
         return $this->render('index', ['blogs' => $blogs]);
     }
 
@@ -80,7 +80,7 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();git
+        $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         }

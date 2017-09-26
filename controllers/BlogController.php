@@ -44,6 +44,11 @@ class BlogController extends Controller
         ]);
     }
 
+
+
+
+
+
     /**
      * Displays a single Blog model.
      * @param integer $id
