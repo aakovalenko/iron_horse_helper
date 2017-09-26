@@ -4,14 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Fueling */
+/* @var $model app\models\Blog */
 
-$this->title = 'Create Fueling';
-$this->params['breadcrumbs'][] = ['label' => 'Fuelings', 'url' => ['index']];
+$this->title = Yii::t('app', 'Create Blog');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Blogs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="fueling-create">
-
+<div class="blog-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

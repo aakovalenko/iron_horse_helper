@@ -6,6 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model app\models\Fueling */
 /* @var $form yii\widgets\ActiveForm */
+//$a = $_GET['id'];
 ?>
 
 <div class="fueling-form">

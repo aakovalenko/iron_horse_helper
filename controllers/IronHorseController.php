@@ -50,14 +50,17 @@ class IronHorseController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new IronHorseSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
 
-        ]);
+            $searchModel = new IronHorseSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+
+            ]);
+
     }
 
     /**
@@ -111,6 +114,8 @@ class IronHorseController extends Controller
 
     public function actionFueling()
     {
+        //if(isset($_POST['id']))
+
         return $this->redirect('../fueling/create');
     }
 
@@ -118,6 +123,12 @@ class IronHorseController extends Controller
     {
         return $this->redirect('../maintenance/create');
 
+    }
+
+    public function actionTest()
+    {
+        //if (isset($_POST['id']))
+        return $this->render('test');
     }
 
     /**

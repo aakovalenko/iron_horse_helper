@@ -10,6 +10,7 @@ use yii\grid\GridView;
 $this->title = Yii::t('app', 'Iron Horses');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div class="iron-horse-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
@@ -39,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
              'updated_at:datetime',
 
             [   'class' => 'yii\grid\ActionColumn',
-                'template' => '{view} {delete} {update} {maintenance} {fueling}',
+                'template' => '{view} {delete} {update} {maintenance} {fueling} {test}',
                 'buttons' => [
                         'maintenance' => function ($url, $model, $key)
                         {
@@ -54,9 +55,18 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Html::a('<span class="glyphicons glyphicon-tint"></span>', $url , [
                                 'title' => 'go to fueling',
                                 'data-pjax' => '0',
+                                'id' => 'fueling'
 
                             ]);
-                        }
+                        },
+                            'test' => function($url, $model,$key)
+    {
+        return Html::a('<span class="glyphicon glyphicon-retweet"></span>', $url , [
+            'title' => 'go to fueling',
+            'id' => 'fueling'
+
+        ]);
+    }
                 ]
             ],
         ],
@@ -70,3 +80,44 @@ $this->params['breadcrumbs'][] = $this->title;
 </p>
 
 <h4>User id: <?= \Yii::$app->user->identity->id?></h4>
+
+
+<?php
+$link = \yii\helpers\Url::to('/iron-horse/test');
+$js = <<<JS
+   /*$('#fueling').on('click', function(){
+       
+       $.ajax({
+       type: 'POST',
+       url: '$link'
+       data: {'id' => '2'}
+       
+       })
+     })*/
+     
+     
+
+       
+        
+       
+           /* $('a#fueling').click(function(){
+                var data = $(this).serialize();
+                $.ajax({
+                url: 'iron-horse/fueling',
+                type: 'POST',
+                data: data,
+                
+                success: function(res){
+                console.log(res);
+            },
+            
+            error: function() {
+              alert('Error!');
+            }
+                });
+                return false;
+            });*/
+JS;
+
+$this->registerJs($js);
+?>
