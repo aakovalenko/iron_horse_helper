@@ -42,7 +42,12 @@ AppAsset::register($this);
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Blog', 'url' => ['/blog/index'], 'visible' => !Yii::$app->user->isGuest],
-            ['label' => 'Car', 'url' => ['/iron-horse/index'],'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'Car', 'items' => [
+                
+                    ['label' => 'Car', 'url'=> ['/iron-horse/index'],'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'Maintenance', 'url'=> ['/maintenance/index'],'visible' => !Yii::$app->user->isGuest],
+                    ['label' => 'Fueling', 'url'=> ['/fueling/index'],'visible' => !Yii::$app->user->isGuest],
+            ]],
 
 
            Yii::$app->user->isGuest ? (
