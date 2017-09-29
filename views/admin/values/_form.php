@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Product;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Value */
@@ -12,7 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'product_id')->textInput() ?>
+    <?= $form->field($model, 'product_id')->dropDownList(Product::find()->select(['name','id'])->indexBy('id')->column(),['prompt' => '']) ?>
 
     <?= $form->field($model, 'attribute_id')->textInput() ?>
 
