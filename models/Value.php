@@ -53,7 +53,7 @@ class Value extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAttribute()
+    public function getProductAttribute()
     {
         return $this->hasOne(Attribute::className(), ['id' => 'attribute_id']);
     }
