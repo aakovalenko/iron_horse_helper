@@ -128,6 +128,11 @@ class IronHorseController extends Controller
     public function actionTest()
     {
         //if (isset($_POST['id']))
+        if (Yii::$app->request->isAjax){
+            Yii::$app->request->post();
+            return 'test';
+        }
+
         return $this->render('test');
     }
 

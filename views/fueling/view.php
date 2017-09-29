@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'iron_horse_id',
             'date',
             'fuel_type',
+
             'price_per_liter',
             'liters',
             'mileage',

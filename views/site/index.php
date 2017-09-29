@@ -135,7 +135,41 @@ $this->title = 'Iron-horse helper';
 </div>
     <?php endforeach;?>
 
+        <hr>
+        <hr>
 
+        <div class="container">
+        <div id="main" style="color: #4dff34">
+            This is the original text when the page first loads.
+        </div>
+        <button id="ajax-button" type="button">Update content with Ajax</button>
+        </div>
+
+<script>
+
+            function replaceText() {
+
+                var target = document.getElementById("main");
+
+                var xhr = new XMLHttpRequest();
+
+                xhr.open('GET', 'new_content.php', true);
+
+                xhr.onreadystatechange = function () {
+                    console.log('readyState: ' + xhr.readyState);
+                    if(xhr.readyState === 2 ){
+                        target.innerHTML = 'loading....';
+                    }
+                    if(xhr.readyState === 4 && xhr.status === 200){
+                        target.innerHTML = xhr.responseText;
+                    }
+                };
+                xhr.send()
+            }
+
+            var button = document.getElementById ("ajax-button");
+            button.addEventListener("click", replaceText);
+</script>
 
 
 

@@ -27,7 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'iron_horse_id',
             'date',
-            'fuel_type',
+            [
+                'attribute' => 'fuel_type',
+                'filter' => [0 => 'gas', 2 => 'diesel', 1 => 'petrol']
+            ],
             'price_per_liter',
             // 'liters',
             // 'mileage',

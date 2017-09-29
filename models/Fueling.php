@@ -58,7 +58,7 @@ class Fueling extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIronHorse()
+    public function getHorse()
     {
         return $this->hasOne(IronHorse::className(), ['id' => 'iron_horse_id']);
     }

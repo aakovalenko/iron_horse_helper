@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\User;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\IronHorseSearch */
@@ -29,7 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
             'id',
-            'user_id',
+            [
+                    'attribute' => 'user_id',
+                    'filter' => User::find()->select(['username','id'])->column(),
+                    //'value'=> 'user_id.username',
+
+            ],
+
+            //'user_id',
             'brand',
             'model',
             'year',
@@ -84,6 +92,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php
 $link = \yii\helpers\Url::to('/iron-horse/test');
+
 $js = <<<JS
    $('#fueling').on('click', function(){
        
@@ -92,7 +101,7 @@ $js = <<<JS
        $.ajax({
        type: 'POST',
        url: '/iron-horse/test',
-       data: {'id': car_id},
+       data: {'id': 'car_id'},
         contentType: "application/json; charset=utf-8",
             dataType: "json",
             

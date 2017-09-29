@@ -42,7 +42,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'value' => \yii\helpers\ArrayHelper::getValue($model,'id.username')
+            ],
+
             'brand',
             'model',
             'year',
