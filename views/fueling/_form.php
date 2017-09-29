@@ -13,7 +13,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'iron_horse_id')->textInput() ?>
+    <?= $form->field($model, 'iron_horse_id')->dropDownList(\app\models\IronHorse::find()->select(['model','id'])->indexBy('id')->column(),['prompt' => '']) ?>
 
     <?= $form->field($model, 'date')->textInput() ?>
 

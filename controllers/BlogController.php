@@ -70,6 +70,7 @@ class BlogController extends Controller
     {
         $model = new Blog();
         $model->sort = 50;
+        $model->user_id = Yii::$app->user->id;
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id, ]);
