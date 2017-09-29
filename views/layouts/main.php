@@ -41,6 +41,15 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Admin', 'items' => [
+                ['label' => 'Products', 'url' => ['/admin/products/index']],
+                ['label' => 'Categories', 'url' => ['/admin/categories/index']],
+                ['label' => 'Attributes', 'url' => ['/admin/attributes/index']],
+                ['label' => 'Values', 'url' => ['/admin/values/index']],
+                ['label' => 'Tags', 'url' => ['/admin/tags/index']],
+                ['label' => 'Product Tags', 'url' => ['/admin/product-tags/index']],
+            ]],
+
             ['label' => 'Blog', 'url' => ['/blog/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Car', 'items' => [
 
