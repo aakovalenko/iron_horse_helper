@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\Category;
+use app\models\Product;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\admin\search\ProductSearch */
@@ -29,6 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                     'attribute' => 'category_id',
                     'filter' => Category::find()->select(['name','id'])->indexBy('id')->column(),
+                    'value' => function (Product $product)
+                    {
+                        return $product->category->name;
+                    }
+
             ],
 
             'name',
