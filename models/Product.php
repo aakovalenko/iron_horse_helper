@@ -22,6 +22,7 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+
     /**
      * @inheritdoc
      */
@@ -39,6 +40,7 @@ class Product extends \yii\db\ActiveRecord
             [['category_id', 'price', 'active'], 'integer'],
             [['name', 'price'], 'required'],
             [['content'], 'string'],
+            [['tagsArray'], 'safe'],
             [['name'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
@@ -99,6 +101,47 @@ class Product extends \yii\db\ActiveRecord
         return $this->hasMany(Attribute::className(), ['id' => 'attribute_id'])->viaTable('{{%value}}', ['product_id' => 'id']);
     }
 
+    private $_tagsArray;
+
+    public function getTagsArray()
+    {
+        if ($this->_tagsArray === null){
+            $this->_tagsArray = $this->getTags()->select('id')->column();
+        }
+        return $this->_tagsArray;
+    }
+
+    public function setTagsArray($value)
+    {
+        return $this->_tagsArray = (array)$value;
+    }
+
+    public function afterSave($insert, $changedAttributes)
+    {
+        $this->updateTags();
+        parent::afterSave($insert, $changedAttributes);
+    }
+
+    public function updateTags()
+    {
+        $currentTagIds = $this->getTags()->select('id')->column();
+        $newTagIds = $this->getTagsArray();
+
+        foreach (array_filter(array_diff($newTagIds, $currentTagIds)) as $tagId){
+
+            if ($tag = Tag::findOne($tagId)) {
+                $this->link('tags', $tag);
+            }
+        }
+
+        foreach (array_filter(array_diff($currentTagIds, $newTagIds)) as $tagId){
+
+            if ($tag = Tag::findOne($tagId)) {
+                $this->unlink('tags',$tag, true);
+            }
+        }
+    }
+
     /**
      * @inheritdoc
      * @return \app\models\query\ProductQuery the active query used by this AR class.
@@ -107,4 +150,6 @@ class Product extends \yii\db\ActiveRecord
     {
         return new \app\models\query\ProductQuery(get_called_class());
     }
+
+
 }
