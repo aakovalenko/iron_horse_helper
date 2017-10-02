@@ -36,7 +36,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'content:ntext',
             'price',
-            'active',
+            [
+                    'attribute' => 'active',
+                    'filter' => [0 => 'No', 1 => 'Yes'],
+                    'format' => 'boolean'
+            ],
+
         ],
     ]) ?>
 
@@ -46,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
     <?= \yii\grid\GridView::widget([
-        'dataProvider' => new \yii\data\ActiveDataProvider(['query' => $model->getValues()]),
+        'dataProvider' => new \yii\data\ActiveDataProvider(['query' => $model->getValues()->with('productAttribute')]),
 
         'columns' => [
 
