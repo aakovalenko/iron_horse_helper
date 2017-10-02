@@ -5,6 +5,7 @@ use yii\helpers\ArrayHelper;
 use yii\grid\GridView;
 use app\models\Category;
 use app\models\Product;
+use app\models\Tag;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\admin\search\ProductSearch */
@@ -43,10 +44,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'price',
             [
                     'label' => 'Tags',
+                    'filter' => Tag::find()->select(['name', 'id'])->indexBy('id')->column(),
                     'value' => function (Product $product)
-                    {
-                        return implode(', ', ArrayHelper::map($product->tags, 'id', 'name'));
-                    }
+                        {
+                            return implode(', ', ArrayHelper::map($product->tags, 'id', 'name'));
+                        }
             ],
             [
                 'attribute' => 'active',
