@@ -33,7 +33,11 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                     'attribute' => 'user_id',
                     'filter' => User::find()->select(['username','id'])->column(),
-                    //'value'=> 'user_id.username',
+
+                    'value'=> function (\app\models\IronHorse $us)
+                    {
+                        return $us->user->username;
+                    }
 
             ],
 
