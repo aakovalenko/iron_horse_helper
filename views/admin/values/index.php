@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\Attribute;
+use app\models\Value;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\admin\search\ValuesSearch */
@@ -24,11 +25,25 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
            // ['class' => 'yii\grid\SerialColumn'],
+            [
+                'attribute' => 'product_id',
+                //'filter' => Attribute::find()->select(['name', 'id'])->indexBy('id')->column(),
+                'value' => function (Value $e)
+                {
+                    return $e->product->name;
+                }
+            ],
 
-            'product_id',
+
             [
                'attribute' => 'attribute_id',
                'filter' => Attribute::find()->select(['name', 'id'])->indexBy('id')->column(),
+                'value' => function (Value $e)
+                {
+                   return $e->productAttribute->name;
+                }
+
+                //'value' => 'productAttribute.name   Можно так
             ],
 
             'value',

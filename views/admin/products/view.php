@@ -29,12 +29,38 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'category_id',
+            [
+                    'attribute' => 'category_id',
+                    'value' => \yii\helpers\ArrayHelper::getValue($model,'category.name'),
+            ],
             'name',
             'content:ntext',
             'price',
             'active',
         ],
     ]) ?>
+
+
+
+
+    <?= \yii\grid\GridView::widget([
+        'dataProvider' => new \yii\data\ActiveDataProvider(['query' => $model->getValues()]),
+
+        'columns' => [
+
+            [
+                'attribute' => 'attribute_id',
+                'value' => 'productAttribute.name',
+
+            ],
+
+            'value',
+
+            [
+                    'class' => 'yii\grid\ActionColumn',
+                    'controller' => 'admin/values',
+            ],
+        ],
+    ]); ?>
 
 </div>

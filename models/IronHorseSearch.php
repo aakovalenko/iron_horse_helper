@@ -46,7 +46,7 @@ class IronHorseSearch extends IronHorse
 
         public function search($params)
     {
-        $query = IronHorse::find();
+        $query = IronHorse::find()->with(['user']);
 
 
         // add conditions that should always apply here
