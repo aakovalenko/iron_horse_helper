@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\Category;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\admin\search\ProductSearch */
@@ -25,7 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
            // ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'category_id',
+            [
+                    'attribute' => 'category_id',
+                    'filter' => Category::find()->select(['name','id'])->indexBy('id')->column(),
+            ],
+
             'name',
             'content:ntext',
             'price',
