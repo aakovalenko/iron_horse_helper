@@ -28,8 +28,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'product_id',
-            'attribute_id',
+                [
+                    'attribute' => 'product_id',
+                    'value' => \yii\helpers\ArrayHelper::getValue($model,'product.name'),
+                ],
+                [
+                    'attribute' => 'attribute_id',
+                    'value' => \yii\helpers\ArrayHelper::getValue($model,'productAttribute.name'),
+                ],
+
+
+
             'value',
         ],
     ]) ?>

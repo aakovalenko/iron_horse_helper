@@ -40,7 +40,11 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'content:ntext',
             'price',
-            // 'active',
+            [
+                'attribute' => 'active',
+                'filter' => [0 => 'No', 1 => 'Yes'],
+                'format' => 'boolean'
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -36,11 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'content:ntext',
             'price',
-            [
-                    'attribute' => 'active',
-                    'filter' => [0 => 'No', 1 => 'Yes'],
-                    'format' => 'boolean'
-            ],
+            'active:boolean'
 
         ],
     ]) ?>
@@ -58,7 +54,6 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'attribute_id',
                 'value' => 'productAttribute.name',
-
             ],
 
             'value',
