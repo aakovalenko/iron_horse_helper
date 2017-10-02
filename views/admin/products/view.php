@@ -1,7 +1,9 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 use yii\widgets\DetailView;
+use app\models\Product;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Product */
@@ -36,7 +38,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'content:ntext',
             'price',
-            'active:boolean'
+            'active:boolean',
+            [
+                'label' => 'Tags',
+                'value' => implode(', ', ArrayHelper::map($model->tags, 'id', 'name')),
+
+            ],
 
         ],
     ]) ?>
