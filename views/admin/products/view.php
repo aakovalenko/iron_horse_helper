@@ -40,7 +40,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-
+<p>
+    <?= Html::a('Добавить значение',['admin/values/create', 'product_id' => $model->id], ['class' => 'btn btn-success']);?>
+</p>
 
 
     <?= \yii\grid\GridView::widget([
