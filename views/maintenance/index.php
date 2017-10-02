@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\IronHorse;
+use app\models\Maintenance;
+
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\MaintenanceSearch */
@@ -25,7 +28,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'iron_horse_id',
+            [
+                    'attribute' => 'iron_horse_id',
+                'filter' => IronHorse::find()->select(['brand','id'])->column(),
+                /*'value' => function(Maintenance $me)
+                {
+                    return $me->ironHorse->model;
+                }*/
+
+
+            ],
+
             'date',
             'mileage',
             'oil',
@@ -51,3 +64,5 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
 </div>
+
+

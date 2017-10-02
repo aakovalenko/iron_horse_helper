@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use app\models\User;
+use app\models\IronHorse;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\IronHorseSearch */
@@ -26,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
 
             'id',
@@ -34,9 +35,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'user_id',
                     'filter' => User::find()->select(['username','id'])->column(),
 
-                    'value'=> function (\app\models\IronHorse $us)
+                    'value'=> function (IronHorse $us)
                     {
-                        return $us->user->username;
+                        return $us->user->username.'+17';
                     }
 
             ],
@@ -90,6 +91,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= Html::a(Yii::t('app', 'Go to maintenance'), ['maintenance'], ['class' => 'btn btn-danger']) ?>
 
 </p>
+
+
 
 <h4>User id: <?= \Yii::$app->user->identity->id?></h4>
 
