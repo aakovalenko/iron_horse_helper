@@ -69,12 +69,14 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '<action:(index|about|contact)>' => 'site/<action>',
+                'catalog' => 'catalog/index',
+                'car/<id:\d+>' => 'iron-horse/view',
                /* 'blog/<$url>' => 'blog/one',
                 'blog/all' => 'blog/all',
                 'blog' => 'blog/index'*/
                 'one/all' => 'one/all',
                'one/<url>' => 'one/',
-                
+
 
 
             ],
