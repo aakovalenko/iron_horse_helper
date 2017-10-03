@@ -68,11 +68,14 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '<action:(index|about|contact)>' => 'site/<action>',
                /* 'blog/<$url>' => 'blog/one',
                 'blog/all' => 'blog/all',
                 'blog' => 'blog/index'*/
                 'one/all' => 'one/all',
                'one/<url>' => 'one/',
+                
+
 
             ],
         ],
