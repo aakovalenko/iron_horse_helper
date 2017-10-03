@@ -39,7 +39,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Catalog', 'url' => ['/site/catalog']],
+            ['label' => 'Catalog', 'url' => ['/catalog/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Admin', 'items' => [
@@ -49,7 +49,7 @@ AppAsset::register($this);
                 ['label' => 'Values', 'url' => ['/admin/values/index']],
                 ['label' => 'Tags', 'url' => ['/admin/tags/index']],
                 ['label' => 'Product Tags', 'url' => ['/admin/product-tags/index']],
-            ]],
+            ], 'visible' => !Yii::$app->user->isGuest],
 
             ['label' => 'Blog', 'url' => ['/blog/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Car', 'items' => [
