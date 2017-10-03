@@ -67,17 +67,26 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            //'urlSuffix' => '.html',
             'rules' => [
-                '<action:(index|about|contact)>' => 'site/<action>',
+                [
+                    'class' => 'yii\web\UrlRule',
+                    'pattern' => 'home',
+                    'route' => 'site/index',
+                    'suffix' => '.html'
+                ],
+                //'как отображать в браузере' => 'путь к контроллеру и действию'
+               // 'home' => 'site/index',
+                '<action:about|contact>' => 'site/<action>',
                 'catalog' => 'catalog/index',
-                'car/<id:\d+>' => 'iron-horse/view',
-               /* 'blog/<$url>' => 'blog/one',
-                'blog/all' => 'blog/all',
-                'blog' => 'blog/index'*/
-                'one/all' => 'one/all',
+                'car' => 'iron-horse/index',
+                'car/<action:update|view>/<id:\d+>' => 'iron-horse/<action>',
+               // 'car/update/<id:\d+>' => 'iron-horse/update',
+                'blog/<action:w+>/<id:\d+>' => 'blog/<action>',
+
+
+                'all' => 'one/all',
                'one/<url>' => 'one/',
-
-
 
             ],
         ],
