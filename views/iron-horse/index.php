@@ -32,13 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             [
-                    'attribute' => 'user_id',
-                    'filter' => User::find()->select(['username','id'])->column(),
+                'attribute' => 'user_id',
+                'filter' => User::find()->select(['username','id'])->column(),
 
-                    'value'=> function (IronHorse $us)
-                    {
-                        return $us->user->username.'+17';
-                    }
+                'value'=> function (IronHorse $us)
+                {
+                    return $us->user->username.'+17';
+                }
 
             ],
 
@@ -49,37 +49,29 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'engine',
             // 'mileage',
             // 'color',
-             'created_at:datetime',
-             'updated_at:datetime',
+            'created_at:datetime',
+            'updated_at:datetime',
 
             [   'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {delete} {update} {maintenance} {fueling} {test}',
                 'buttons' => [
-                        'maintenance' => function ($url, $model, $key)
-                        {
-                            return Html::a('<span class="glyphicon glyphicon-wrench"></span>', $url , [
-                                    'title' => 'go to maintenance',
-                                    'data-pjax' => '0',
-
-                            ]);
-                        },
-                        'fueling' => function($url, $model,$key)
+                    'maintenance' => function ($url, $model, $key)
                     {
-                            return Html::a('<span class="glyphicons glyphicon-tint"></span>', $url , [
-                                'title' => 'go to fueling',
-                                'data-pjax' => '0',
-                                'id' => 'fueling'
+                        return Html::a('<span class="glyphicon glyphicon-wrench"></span>', ['/maintenance/create', 'id'=>$model->id], [
+                            'title' => 'go to maintenance',
+                            'data-pjax' => '0',
 
-                            ]);
-                        },
-                            'test' => function($url, $model,$key)
-    {
-        return Html::a('<span class="glyphicon glyphicon-retweet"></span>', $url , [
-            'title' => 'go to fueling',
-            'id' => 'fueling'
+                        ]);
+                    },
+                    'fueling' => function($url, $model,$key)
+                    {
+                        return Html::a('<span class="glyphicon glyphicon-tint"></span>', ['/fueling/create', 'id'=> $model->id] , [
+                            'title' => 'go to fueling',
+                            'data-pjax' => '0',
 
-        ]);
-    }
+                        ]);
+                    },
+
                 ]
             ],
         ],
@@ -97,59 +89,3 @@ $this->params['breadcrumbs'][] = $this->title;
 <h4>User id: <?= \Yii::$app->user->identity->id?></h4>
 
 
-<?php
-$link = \yii\helpers\Url::to('/iron-horse/test');
-
-$js = <<<JS
-   $('#fueling').on('click', function(){
-       
-       var car_id = $(this).data('id');
-       
-       $.ajax({
-       type: 'POST',
-       url: '/iron-horse/test',
-       data: {'id': 'car_id'},
-        contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            
-             success: function (data) {
-               //do something
-                console.log(fileid);
-               alert("working");
-            },
-            error: function (errormessage) {
-
-                //do something else
-                alert("not working");
-
-            }
-       
-       })
-     })
-     
-     
-
-       
-        
-       
-           /* $('a#fueling').click(function(){
-                var data = $(this).serialize();
-                $.ajax({
-                url: 'iron-horse/fueling',
-                type: 'POST',
-                data: data,
-                
-                success: function(res){
-                console.log(res);
-            },
-            
-            error: function() {
-              alert('Error!');
-            }
-                });
-                return false;
-            });*/
-JS;
-
-$this->registerJs($js);
-?>

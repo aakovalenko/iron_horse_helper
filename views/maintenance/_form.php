@@ -18,11 +18,9 @@ use app\models\IronHorse;
     <?php $form = ActiveForm::begin(); ?>
 
 
-    <?= $form->field($model, 'iron_horse_id')
+  <?= $form->field($model, 'iron_horse_id')
         ->dropDownList(
-            ArrayHelper::map(IronHorse::find()->where(['user_id' => Yii::$app->user->id])->all(),'id','brand'),
-            ['prompt' => 'Select Car']
-    ); ?>
+            ArrayHelper::map(IronHorse::find()->where(['user_id' => Yii::$app->user->id])->all(),'id','brand'));?>
 
 
     <?= $form->field($model, 'date')->textInput()->hint(Html::tag('span', 'Format yyyy-mm-dd')) ?>

@@ -76,9 +76,11 @@ class MaintenanceController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new Maintenance();
+        $model->iron_horse_id = $id;
+
 
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

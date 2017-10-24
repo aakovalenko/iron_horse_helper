@@ -6,6 +6,7 @@ use app\models\Blog;
 use app\rules\AuthorRule;
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -126,6 +127,7 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        //return Url::to(['site/index']);
         return $this->render('about');
     }
 

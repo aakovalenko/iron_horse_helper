@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\helpers\ArrayHelper;
+use app\models\IronHorse;
+use app\models\User;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\IronHorse */
@@ -45,7 +47,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             [
                 'attribute' => 'user_id',
-                'value' => ArrayHelper::getValue($model,'user_id')
+                'filter' => User::find()->select(['username','id'])->column(),
+
+                'value'=> function (IronHorse $us)
+                {
+                    return $us->user->username.'+17';
+                }
+
             ],
 
             'brand',
