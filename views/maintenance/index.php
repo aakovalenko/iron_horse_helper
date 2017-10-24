@@ -28,14 +28,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            //'iron_horse_id',
             [
-                    'attribute' => 'iron_horse_id',
+                'attribute' => 'iron_horse_id',
                 'filter' => IronHorse::find()->select(['brand','id'])->column(),
-                /*'value' => function(Maintenance $me)
-                {
-                    return $me->ironHorse->model;
-                }*/
 
+                'value'=> function (Maintenance $us)
+                {
+                    return $us->ironHorse->brand;
+                }
 
             ],
 

@@ -9,7 +9,7 @@ use app\models\User;
 /* @var $this yii\web\View */
 /* @var $model app\models\IronHorse */
 
-$this->title = $model->id;
+$this->title = $model->brand . '_'. Yii::$app->user->identity->username;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Iron Horses'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

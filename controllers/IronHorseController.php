@@ -90,24 +90,11 @@ class IronHorseController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
 
 
-
-            //1.get the instance of the upload file
-
-           /* $imageName = $model->brand;
-
-            $model->file = UploadedFile::getInstance($model,'file');
-
-            $model->file->saveAs('uploads/'.$imageName.'.'.$model->file->extension);
-
-            //2. save the path in the db column
-
-            $model->image = 'uploads/'.$imageName.'.'.$model->file->extension;*/
-
-
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'iron_horse'=>$model->brand,
             ]);
         }
     }

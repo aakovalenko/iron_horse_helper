@@ -79,7 +79,7 @@ class MaintenanceController extends Controller
     public function actionCreate($id)
     {
         $model = new Maintenance();
-        $model->iron_horse_id = $id;
+       $model->iron_horse_id = $id;
 
 
 

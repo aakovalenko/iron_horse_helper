@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'maintenance' => function ($url, $model, $key)
                     {
-                        return Html::a('<span class="glyphicon glyphicon-wrench"></span>', ['/maintenance/create', 'id'=>$model->id], [
+                        return Html::a('<span class="glyphicon glyphicon-wrench"></span>', ['/maintenance/create', 'id' => $model->id], [
                             'title' => 'go to maintenance',
                             'data-pjax' => '0',
 
