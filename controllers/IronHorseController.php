@@ -21,7 +21,7 @@ class IronHorseController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+  /*  public function behaviors()
     {
         return [
             'access' => [
@@ -42,7 +42,7 @@ class IronHorseController extends Controller
                 ],
             ],
         ];
-    }
+    }*/
 
     /**
      * Lists all IronHorse models.

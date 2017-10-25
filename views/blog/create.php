@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1><?= Html::encode($this->title . ' author- ' .$model->user->username) ?></h1>
 
     <?= $this->render('_form', [
         'model' => $model,

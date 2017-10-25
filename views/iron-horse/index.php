@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     </p>
     <?= GridView::widget([
+
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
@@ -39,7 +40,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 {
                     return '+17'.$us->user->username.'+17';
                 }
-
             ],
 
             //'user_id',
@@ -86,6 +86,5 @@ $this->params['breadcrumbs'][] = $this->title;
 
 
 
-<h4>User id: <?= \Yii::$app->user->identity->id?></h4>
 
 

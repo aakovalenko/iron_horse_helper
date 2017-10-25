@@ -29,7 +29,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'Iron Horse',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -39,7 +39,8 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Catalog', 'url' => ['/catalog/index']],
+            ['label' => 'Catalog', 'url' => ['/catalog/index'], 'visible' => !Yii::$app->user->isGuest &&
+                                                                              Yii::$app->user->can('admin')],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Admin', 'items' => [
@@ -49,7 +50,7 @@ AppAsset::register($this);
                 ['label' => 'Values', 'url' => ['/admin/values/index']],
                 ['label' => 'Tags', 'url' => ['/admin/tags/index']],
                 ['label' => 'Product Tags', 'url' => ['/admin/product-tags/index']],
-            ], 'visible' => !Yii::$app->user->isGuest],
+            ], 'visible' => !Yii::$app->user->isGuest && Yii::$app->user->can('admin')],
 
             ['label' => 'Blog', 'url' => ['/blog/index'], 'visible' => !Yii::$app->user->isGuest],
             ['label' => 'Car', 'items' => [
@@ -57,7 +58,7 @@ AppAsset::register($this);
                     ['label' => 'Car', 'url'=> ['/iron-horse/index'],'visible' => !Yii::$app->user->isGuest],
                     ['label' => 'Maintenance', 'url'=> ['/maintenance/index'],'visible' => !Yii::$app->user->isGuest],
                     ['label' => 'Fueling', 'url'=> ['/fueling/index'],'visible' => !Yii::$app->user->isGuest],
-            ]],
+            ], 'visible' => !Yii::$app->user->isGuest],
 
 
            Yii::$app->user->isGuest ? (

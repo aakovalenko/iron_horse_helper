@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\User;
+use app\models\Blog;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Blog */
@@ -29,7 +31,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'filter' => User::find()->select(['username','id'])->column(),
+
+                'value'=> function (Blog $us)
+                {
+                    return $us->user->username;
+                }
+
+            ],
             'title',
             'text:ntext',
             'url:url',

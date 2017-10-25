@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use app\models\User;
+use app\models\Blog;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\BlogSearch */
@@ -25,7 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'filter' => User::find()->select(['username','id'])->column(),
+
+                'value'=> function (Blog $us)
+                {
+                    return $us->user->username;
+                }
+
+            ],
+
             'title',
             'text:ntext',
             'url:url',

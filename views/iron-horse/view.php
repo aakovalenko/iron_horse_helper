@@ -15,13 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="iron-horse-view">
 
-    <h1><?= Html::encode($this->title) ?>
-
-    <h2 style="color: #2cff20">User ID: <?= $model->user_id;?>(<?=(Yii::$app->user->identity->username)?>)</h2>
-
-
-
-
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?php if (\Yii::$app->user->can('update')): ?>
