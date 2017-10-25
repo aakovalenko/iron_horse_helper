@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Maintenance */
 
-$this->title = Yii::t('app', 'Create Maintenance');
+$this->title = Yii::t('app', 'Create Maintenance').' '.$model->ironHorse->brand.' '.$model->ironHorse->model.' '.$model->ironHorse->engine;;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Maintenances'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

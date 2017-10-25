@@ -18,9 +18,6 @@ use app\models\IronHorse;
     <?php $form = ActiveForm::begin(); ?>
 
 
-  <?= $model->ironHorse->brand.' '.$model->ironHorse->model.' '.$model->ironHorse->engine; ?>
-
-
     <?= $form->field($model, 'date')->textInput()->hint(Html::tag('span', 'Format yyyy-mm-dd')) ?>
 
 

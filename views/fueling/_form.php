@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'date')->textInput() ?>
 
-    <?= $form->field($model, 'fuel_type')->dropDownList(['gas', 'petrol' => ['A80','A92','A95','A98'], 'diesel']) ?>
+    <?= $form->field($model, 'fuel_type')->dropDownList(['gas'=> ['LPG','CNG'], 'petrol' => ['A-80','A-92','A-95','A-98'], 'diesel']) ?>
 
     <?= $form->field($model, 'price_per_liter')->textInput(['maxlength' => true]) ?>
 

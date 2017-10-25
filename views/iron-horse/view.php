@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 'value'=> function (IronHorse $us)
                 {
-                    return $us->user->username.'+17';
+                    return $us->user->username;
                 }
 
             ],

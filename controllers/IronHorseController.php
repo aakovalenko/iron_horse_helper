@@ -94,7 +94,7 @@ class IronHorseController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
-                'iron_horse'=>$model->brand,
+
             ]);
         }
     }

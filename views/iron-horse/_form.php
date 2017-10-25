@@ -12,7 +12,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?= $form->field($model, 'user_id') ?>
+    <?=$model->user->username ?>
 
     <?= $form->field($model, 'brand')->textInput(['maxlength' => true]) ?>
 
