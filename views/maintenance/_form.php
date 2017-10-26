@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use dosamigos\datepicker\DatePicker;
+use kartik\date\DatePicker;
 use yii\helpers\ArrayHelper;
 use app\models\IronHorse;
 
@@ -18,7 +18,15 @@ use app\models\IronHorse;
     <?php $form = ActiveForm::begin(); ?>
 
 
-    <?= $form->field($model, 'date')->textInput()->hint(Html::tag('span', 'Format yyyy-mm-dd')) ?>
+    <?= $form->field($model, 'date')->widget(DatePicker::className(),[
+        'name' => 'date',
+        'type' => DatePicker::TYPE_COMPONENT_PREPEND,
+        //'value' => '23-Feb-1982',
+        'pluginOptions' => [
+            'autoclose'=>true,
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true
+        ]]); ?>
 
 
     <?= $form->field($model, 'mileage')->textInput() ?>
