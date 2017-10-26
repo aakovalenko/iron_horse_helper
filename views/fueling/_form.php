@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Fueling */
@@ -13,10 +14,20 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'date')->widget(DatePicker::className(),[
+        'name' => 'date',
+        'type' => DatePicker::TYPE_COMPONENT_PREPEND,
+        //'value' => '23-Feb-1982',
+        'pluginOptions' => [
+            'autoclose'=>true,
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true
+    ]]); ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
-
-    <?= $form->field($model, 'fuel_type')->dropDownList(['gas'=> ['LPG','CNG'], 'petrol' => ['A-80','A-92','A-95','A-98'], 'diesel']) ?>
+    <?= $form->field($model, 'fuel_type')->dropDownList(
+            ['gas'=> ['LPG' => 'LPG','CNG' => 'CNG'],
+            'petrol' => ['A-80'=>'A-80','A-92'=>'A-92','A-95'=>'A-95','A-98'=>'A-98'],
+            'diesel'=>['diesel'=>'diesel']]) ?>
 
     <?= $form->field($model, 'price_per_liter')->textInput(['maxlength' => true]) ?>
 
@@ -29,6 +40,7 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
+
 
 </div>
 

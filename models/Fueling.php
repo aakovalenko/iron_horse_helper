@@ -33,7 +33,9 @@ class Fueling extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['iron_horse_id', 'date', 'fuel_type'], 'integer'],
+            [['iron_horse_id'], 'integer'],
+            [['date'], 'safe'],
+            [['fuel_type'], 'string','max' => 11],
             [['price_per_liter', 'liters', 'mileage'], 'string', 'max' => 11],
             [['iron_horse_id'], 'exist', 'skipOnError' => true, 'targetClass' => IronHorse::className(), 'targetAttribute' => ['iron_horse_id' => 'id']],
         ];

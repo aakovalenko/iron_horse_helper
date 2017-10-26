@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'iron_horse_id',
-            'date',
+            'date:date',
             'fuel_type',
 
             'price_per_liter',

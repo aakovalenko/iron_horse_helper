@@ -1,4 +1,5 @@
 <?php
+use \kartik\datecontrol\Module;
 
 $params = require(__DIR__ . '/params.php');
 $db = require(__DIR__ . '/db.php');
@@ -13,9 +14,27 @@ $config = [
             //'identityClass' => 'dektrium\user\models\User',
             'class' => 'dektrium\user\Module',
             'admins' => ['andrii'],
-
         ],
+        'datecontrol' =>  [
+            'class' => '\kartik\datecontrol\Module',
 
+            'displaySettings' => [
+                Module::FORMAT_DATE => 'dd-MM-yyyy',
+                Module::FORMAT_TIME => 'hh:mm:ss a',
+                Module::FORMAT_DATETIME => 'dd-MM-yyyy hh:mm:ss a',
+            ],
+            'saveSettings' => [
+                Module::FORMAT_DATE => 'php:yyyy-mm-dd', // saves as unix timestamp
+                Module::FORMAT_TIME => 'php:H:i:s',
+                Module::FORMAT_DATETIME => 'php:Y-m-d H:i:s',
+            ],
+
+            'displayTimezone' => 'UTC',
+
+            'saveTimezone' => 'UTC',
+
+            'autoWidget' => true,
+        ]
 
     ],
     'components' => [
