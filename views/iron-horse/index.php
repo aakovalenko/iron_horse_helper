@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 'value'=> function (IronHorse $us)
                 {
-                    return '+17'.$us->user->username.'+17';
+                    return '+17'.$us->user->username;
                 }
             ],
 
@@ -52,7 +52,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at:datetime',
             'updated_at:datetime',
 
-            [   'class' => 'yii\grid\ActionColumn',
+            [
+                    'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {delete} {update} {maintenance} {fueling} {test}',
                 'buttons' => [
                     'maintenance' => function ($url, $model, $key)

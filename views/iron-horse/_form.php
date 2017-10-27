@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\file\FileInput;
+use kartik\color\ColorInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\IronHorse */
@@ -12,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
-    <?=$model->user->username ?>
+    <?= $form->field($model, 'user_id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'brand')->textInput(['maxlength' => true]) ?>
 
@@ -24,9 +26,14 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'mileage')->textInput() ?>
 
-    <?= $form->field($model, 'color')->textInput() ?>
+    <?=  $form->field($model, 'color')->widget(ColorInput::classname(), [
+        'options' => ['placeholder' => 'Select color ...'],
+    ]); ?>
 
     <?= $form->field($model, 'image')->fileInput() ?>
+
+
+
 
 
     <div class="form-group">

@@ -5,6 +5,8 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\behaviors\TimestampBehavior;
+use app\models\User;
+
 
 /**
  * This is the model class for table "iron_horse".
@@ -40,13 +42,12 @@ class IronHorse extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['brand', 'model', 'year', 'engine', 'mileage','user_id'], 'required'],
-            [['year', 'engine', 'mileage', 'color'], 'integer'],
+            [['brand', 'model', 'year', 'engine', 'mileage'], 'required'],
+            [['year', 'engine', 'mileage'], 'integer'],
             [['user_id'], 'string', 'max' => 11],
             [['user_id'],'safe'],
-            [['file'],'file'],
-            [['brand', 'model','image'], 'string', 'max' => 50],
-
+            [['image'], 'file', 'extensions' => 'png, jpg'],
+            [['brand', 'model','image','color'], 'string', 'max' => 50],
         ];
     }
 
@@ -65,7 +66,6 @@ class IronHorse extends \yii\db\ActiveRecord
                 // 'value' => new Expression('NOW()'),
             ],
     ];
-
     }
 
     /**
@@ -90,4 +90,6 @@ class IronHorse extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
+
 }

@@ -48,7 +48,7 @@ class Fueling extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'iron_horse_id' => 'Iron Horse ID',
+            'iron_horse_id' => 'Car',
             'date' => 'Date',
             'fuel_type' => 'Fuel Type',
             'price_per_liter' => 'Price Per Liter',

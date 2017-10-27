@@ -2,15 +2,13 @@
 
 namespace app\controllers;
 
-use app\models\Maintenance;
-use app\models\MaintenanceSearch;
+
+use app\models\UploadForm;
 use Yii;
 use app\models\IronHorse;
 use app\models\IronHorseSearch;
-use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
 
 /**
@@ -18,31 +16,6 @@ use yii\web\UploadedFile;
  */
 class IronHorseController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-  /*  public function behaviors()
-    {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        //'actions' => ['create'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-
-                ],
-            ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }*/
 
     /**
      * Lists all IronHorse models.
@@ -50,15 +23,12 @@ class IronHorseController extends Controller
      */
     public function actionIndex()
     {
-
-
             $searchModel = new IronHorseSearch();
             $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
             return $this->render('index', [
                 'searchModel' => $searchModel,
                 'dataProvider' => $dataProvider,
-
             ]);
 
     }
@@ -86,15 +56,11 @@ class IronHorseController extends Controller
 
         $model->user_id = Yii::$app->user->id;
 
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-
-
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
-
             ]);
         }
     }
@@ -111,7 +77,6 @@ class IronHorseController extends Controller
         return $this->redirect('../maintenance/create');
 
     }
-
 
     /**
      * Updates an existing IronHorse model.

@@ -99,7 +99,7 @@ $config = [
                 '<action:about|contact>' => 'site/<action>',
                 'catalog' => 'catalog/index',
                 'car' => 'iron-horse/index',
-                'car/<action:update|view>/<id:\d+>' => 'iron-horse/<action>',
+                'car/<action:update|view|create>/<id:\d+>' => 'iron-horse/<action>',
                // 'car/update/<id:\d+>' => 'iron-horse/update',
                 'blog/<action:w+>/<id:\d+>' => 'blog/<action>',
 
