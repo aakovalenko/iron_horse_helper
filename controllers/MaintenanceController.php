@@ -67,7 +67,7 @@ class MaintenanceController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($id) ,
         ]);
     }
 
@@ -80,8 +80,6 @@ class MaintenanceController extends Controller
     {
         $model = new Maintenance();
        $model->iron_horse_id = $id;
-
-
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);

@@ -7,7 +7,7 @@ use app\models\Maintenance;
 /* @var $this yii\web\View */
 /* @var $model app\models\Maintenance */
 
-$this->title = $model->id;
+$this->title = $model->ironHorse->brand;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Maintenances'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
