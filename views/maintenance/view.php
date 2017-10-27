@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use app\models\Maintenance;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Maintenance */
@@ -29,7 +30,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'iron_horse_id',
+           // 'iron_horse_id',
+            [
+                'attribute' => 'iron_horse_id',
+                // 'filter' => \app\models\IronHorse::find()->select(['brand','id'])->column(),
+
+                'value'=> function (Maintenance $us)
+                {
+                    return $us->ironHorse->brand.' '. $us->ironHorse->model;
+                }
+            ],
             'date',
             'mileage',
             'oil',

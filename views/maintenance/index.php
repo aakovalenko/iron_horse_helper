@@ -25,9 +25,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            //['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+           // 'id',
             //'iron_horse_id',
             [
                 'attribute' => 'iron_horse_id',
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'date',
             'mileage',
-            'oil',
+            //'oil',
             // 'gearbox_oil',
             // 'hydraulic_oil',
             // 'oil_filter',
